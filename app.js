@@ -1,6 +1,4 @@
 /** Express app for message.ly. */
-
-
 const express = require("express");
 const cors = require("cors");
 const { authenticateJWT } = require("./middleware/auth");
@@ -50,14 +48,10 @@ app.use(function(err, req, res, next) {
 
 module.exports = app;
 
-// install all requirements and make a git repo
-// create messagely database and messagely test database and import schema from data.sql
-// tour app.js, expressError.js, db.js, server.js, config.js, middleware/auth.js 
-// fill in the user model
-// run the tests for the user model $jest -i
 //fill in the routes: auth, users, messages with appropriate security
+// check user & message routes with insomnia
+// go over solution and update code with correct information where needed
 
-//check authentication routes test
 // write integration tests for all other routes
 //make a simple front end with registration page, login page, page to see all messages(to and from you), detail page for message, page to make new message with drop-down of users, using AJAX
 // send SMS with new message notifying user with Twilio (keep accountSid/authToken secret)
