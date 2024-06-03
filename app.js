@@ -48,8 +48,6 @@ app.use(function(err, req, res, next) {
 
 module.exports = app;
 
-//fill in the routes: auth, users, messages with appropriate security
-// check user & message routes with insomnia
 // go over solution and update code with correct information where needed
 
 // write integration tests for all other routes
