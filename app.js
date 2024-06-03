@@ -48,8 +48,6 @@ app.use(function(err, req, res, next) {
 
 module.exports = app;
 
-// go over solution and update code with correct information where needed
-
 // write integration tests for all other routes
 //make a simple front end with registration page, login page, page to see all messages(to and from you), detail page for message, page to make new message with drop-down of users, using AJAX
 // send SMS with new message notifying user with Twilio (keep accountSid/authToken secret)

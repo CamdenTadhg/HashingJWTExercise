@@ -14,8 +14,12 @@ const router = new express.Router();
  *
  **/
 router.get('/', ensureLoggedIn, async (req, res, next) =>{
-    results = await User.all();
-    return res.json({'users': results});
+    try{
+        const users = await User.all();
+        return res.json({users});
+    } catch(e) {
+        return next(e);
+    }
 });
 
 
@@ -25,8 +29,12 @@ router.get('/', ensureLoggedIn, async (req, res, next) =>{
  *
  **/
 router.get('/:username', ensureCorrectUser, async (req, res, next) => {
-    results = await User.get(req.params.username);
-    return res.json({"user": results});
+    try {
+        const results = await User.get(req.params.username);
+        return res.json({"user": results});
+    } catch(e) {
+        return next(e);
+    }
 })
 
 
@@ -40,8 +48,12 @@ router.get('/:username', ensureCorrectUser, async (req, res, next) => {
  *
  **/
 router.get('/:username/to', ensureCorrectUser, async (req, res, next) =>{
-    results = await User.messagesTo(req.params.username);
-    return res.json({'messages': results});
+    try {
+        const results = await User.messagesTo(req.params.username);
+        return res.json({'messages': results});
+    } catch(e){
+        return next(e);
+    }
 })
 
 
@@ -55,8 +67,12 @@ router.get('/:username/to', ensureCorrectUser, async (req, res, next) =>{
  *
  **/
 router.get('/:username/from', ensureCorrectUser, async (req, res, next) => {
-    results = await User.messagesFrom(req.params.username);
-    return res.json({'message': results});
+    try {
+        const results = await User.messagesFrom(req.params.username);
+        return res.json({'message': results});
+    } catch(e){
+        return next(e);
+    }
 })
 
 module.exports = router

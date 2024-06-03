@@ -20,7 +20,6 @@ router.post('/login', async (req, res, next) =>{
         }
         if (await User.authenticate(username, password)){
             let token = jwt.sign({username}, SECRET_KEY);
-            console.log('token is ', token);
             await User.updateLoginTimestamp(username);
             return res.json({token});
         } else {
@@ -48,6 +47,7 @@ router.post('/register', async (req, res, next) => {
         const new_user = await User.register({username, password, first_name, last_name, phone});
         if (new_user){
             let token = jwt.sign({username}, SECRET_KEY);
+            await User.updateLoginTimestamp(username);
             return res.json({token});
         }
     } catch(e) {
